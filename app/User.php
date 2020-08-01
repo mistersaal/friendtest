@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Mistersaal\VkMiniAppsAuth\VkMiniAppsAuthenticatable;
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'img'
     ];
 
     public function getVkIdFieldName(): string
@@ -26,12 +27,8 @@ class User extends Authenticatable
         return 'vkid';
     }
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function test(): HasOne
+    {
+        return $this->hasOne(Test::class);
+    }
 }
