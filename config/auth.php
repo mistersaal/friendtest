@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'vkMiniApps',
         'passwords' => 'users',
     ],
 
@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'vkMiniApps' => [
+            'driver' => 'vkSign',
+            'provider' => 'vkUsers',
+        ],
     ],
 
     /*
@@ -68,6 +73,11 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+
+        'vkUsers' => [
+            'driver' => 'vkMiniApps',
             'model' => App\User::class,
         ],
 
