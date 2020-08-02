@@ -11,6 +11,12 @@ class DefaultQuestion extends Model
         'value'
     ];
 
+    protected $hidden = [
+        'visible',
+        'created_at',
+        'updated_at',
+    ];
+
     public function questions(): HasMany
     {
         return $this->hasMany(Question::class);

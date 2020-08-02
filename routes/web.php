@@ -15,3 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/info', 'MainController@info')->name('info');
+
+Route::middleware('auth.vk')->group(function () {
+    Route::get('/questions/default', 'DefaultQuestionController@index')->name('defaultQuestions');
+});

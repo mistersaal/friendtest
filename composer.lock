@@ -1132,16 +1132,16 @@
         },
         {
             "name": "mistersaal/laravel-vk-mini-apps-auth",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mistersaal/laravel-vk-mini-apps-auth.git",
-                "reference": "69879f139cf05c185087db754ebe6a5785c30e18"
+                "reference": "5073667e5fbf88af04feb4bff44eb8837fd68434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mistersaal/laravel-vk-mini-apps-auth/zipball/69879f139cf05c185087db754ebe6a5785c30e18",
-                "reference": "69879f139cf05c185087db754ebe6a5785c30e18",
+                "url": "https://api.github.com/repos/mistersaal/laravel-vk-mini-apps-auth/zipball/5073667e5fbf88af04feb4bff44eb8837fd68434",
+                "reference": "5073667e5fbf88af04feb4bff44eb8837fd68434",
                 "shasum": ""
             },
             "require": {
@@ -1165,7 +1165,7 @@
                 "MIT"
             ],
             "description": "Пакет для аутентификации пользователя VK по подписи VK Mini Apps для Laravel",
-            "time": "2020-06-03T13:34:28+00:00"
+            "time": "2020-08-02T19:41:02+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -4846,16 +4846,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "87335b120bc9652e4ee2bf285b7322a785211476"
+                "reference": "58dc4a8df3d41174c677a370b6779b694e4539e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/87335b120bc9652e4ee2bf285b7322a785211476",
-                "reference": "87335b120bc9652e4ee2bf285b7322a785211476",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/58dc4a8df3d41174c677a370b6779b694e4539e7",
+                "reference": "58dc4a8df3d41174c677a370b6779b694e4539e7",
                 "shasum": ""
             },
             "require": {
@@ -4914,7 +4914,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-07-27T15:17:39+00:00"
+            "time": "2020-08-01T21:20:01+00:00"
         },
         {
             "name": "facade/ignition-contracts",
