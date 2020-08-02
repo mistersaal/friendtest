@@ -29,6 +29,7 @@ class CreateQuestionsTable extends Migration
                 ->references('id')
                 ->on('default_questions')
                 ->onDelete('cascade');
+            $table->unique(['test_id', 'default_question_id']);
         });
     }
 

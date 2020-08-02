@@ -15,7 +15,7 @@ class CreateDefaultQuestionsTable extends Migration
     {
         Schema::create('default_questions', function (Blueprint $table) {
             $table->id();
-            $table->string('value', 256);
+            $table->string('value', 256)->unique();
             $table->boolean('visible')->default(true);
             $table->timestamps();
         });
