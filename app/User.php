@@ -14,7 +14,13 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'first_name', 'last_name', 'img'
+        'first_name', 'last_name', 'img', 'vkid'
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'id'
     ];
 
     public function getVkIdFieldName(): string

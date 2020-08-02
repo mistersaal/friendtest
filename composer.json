@@ -15,7 +15,8 @@
         "laravel/framework": "^7.22.2",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
-        "mistersaal/laravel-vk-mini-apps-auth": "^1.1"
+        "mistersaal/laravel-vk-mini-apps-auth": "^1.1",
+        "vkcom/vk-php-sdk": "^5.101"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.7",
