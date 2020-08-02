@@ -5,25 +5,20 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Question extends Model
+class TestAnswer extends Model
 {
-    protected $casts = [
-        'answer' => 'boolean',
-    ];
-
     public function test(): BelongsTo
     {
         return $this->belongsTo(Test::class);
     }
 
-    public function defaultQuestion(): HasOne
+    public function responder(): BelongsTo
     {
-        return $this->hasOne(DefaultQuestion::class);
+        return $this->belongsTo(Test::class, 'user_id');
     }
 
-    public function userAnswers(): HasMany
+    public function questionAnswers(): HasMany
     {
         return $this->hasMany(QuestionAnswer::class);
     }

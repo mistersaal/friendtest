@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -13,11 +13,6 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'first_name', 'last_name', 'img'
     ];
@@ -30,5 +25,10 @@ class User extends Authenticatable
     public function test(): HasOne
     {
         return $this->hasOne(Test::class);
+    }
+
+    public function testAnswers(): HasMany
+    {
+        return $this->hasMany(TestAnswer::class);
     }
 }
