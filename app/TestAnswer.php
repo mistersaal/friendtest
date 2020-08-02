@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TestAnswer extends Model
 {
+    protected $fillable = [
+        'test_id'
+    ];
+
     public function test(): BelongsTo
     {
         return $this->belongsTo(Test::class);

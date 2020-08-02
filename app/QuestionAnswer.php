@@ -20,4 +20,10 @@ class QuestionAnswer extends Model
     protected $casts = [
         'answer' => 'boolean',
     ];
+
+    protected $fillable = [
+        'answer',
+        'question_id',
+        'test_answer_id',
+    ];
 }

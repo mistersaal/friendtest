@@ -13,6 +13,13 @@ class Question extends Model
         'answer' => 'boolean',
     ];
 
+    protected $fillable = [
+        'value',
+        'answer',
+        'default_question_id',
+        'test_id'
+    ];
+
     public function test(): BelongsTo
     {
         return $this->belongsTo(Test::class);

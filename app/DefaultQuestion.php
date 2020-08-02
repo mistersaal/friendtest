@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class DefaultQuestion extends Model
 {
+    protected $fillable = [
+        'value'
+    ];
+
     public function questions(): HasMany
     {
         return $this->hasMany(Question::class);
