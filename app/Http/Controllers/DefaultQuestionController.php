@@ -9,6 +9,6 @@ class DefaultQuestionController extends Controller
 {
     public function index()
     {
-        return DefaultQuestion::whereVisible(true)->get();
+        return DefaultQuestion::whereVisible(true)->get()->pluck('value', 'id');
     }
 }
