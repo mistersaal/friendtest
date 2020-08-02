@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Test extends Model
 {
+    protected $hidden = [
+        'updated_at',
+        'created_at',
+        'user_id',
+        'id'
+    ];
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
