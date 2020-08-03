@@ -12,7 +12,6 @@ class Test extends Model
         'updated_at',
         'created_at',
         'user_id',
-        'id'
     ];
 
     public function author(): BelongsTo

@@ -9,8 +9,10 @@ class TestController extends Controller
 {
     public function index()
     {
-        return auth()->user()->test()->with('questions.defaultQuestion')->first() ??
+        /** @var Test $test */
+        $test = auth()->user()->test()->with('questions.defaultQuestion')->first() ??
             abort(404, "У вас нет пока теста.");
+        return $test->setRelation('questions', $test->questions->keyBy('id'));
     }
 
     public function store(TestRequest $request)
