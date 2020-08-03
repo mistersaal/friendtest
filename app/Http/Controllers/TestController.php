@@ -9,7 +9,7 @@ class TestController extends Controller
 {
     public function index()
     {
-        return auth()->user()->test()->with('questions')->first() ??
+        return auth()->user()->test()->with('questions.defaultQuestion')->first() ??
             abort(404, "У вас нет пока теста.");
     }
 

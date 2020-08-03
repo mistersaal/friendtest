@@ -18,7 +18,7 @@ class MainController extends Controller
         } else {
             $user = $userService->createNewUser(auth()->getVkIdentifier());
         }
-        $user->test;
+        $user->hasTest = $user->test()->exists();
         return compact('user');
     }
 }

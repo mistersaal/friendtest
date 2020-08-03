@@ -20,14 +20,21 @@ class Question extends Model
         'test_id'
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'default_question_id',
+        'test_id',
+    ];
+
     public function test(): BelongsTo
     {
         return $this->belongsTo(Test::class);
     }
 
-    public function defaultQuestion(): HasOne
+    public function defaultQuestion(): BelongsTo
     {
-        return $this->hasOne(DefaultQuestion::class);
+        return $this->belongsTo(DefaultQuestion::class);
     }
 
     public function userAnswers(): HasMany
