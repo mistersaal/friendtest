@@ -26,7 +26,7 @@ class TestAnswer extends Model
 
     public function responder(): BelongsTo
     {
-        return $this->belongsTo(Test::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function questionAnswers(): HasMany

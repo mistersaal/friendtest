@@ -85,4 +85,18 @@ class TestAnswerService
             return $questions->has($answer['question_id']);
         }) && $count === $questions->count();
     }
+
+    public function getTestAnswersInfo(User $user): array
+    {
+        $answers = $user->test->testAnswers()->with(['questionAnswers', 'responder'])->get();
+        foreach ($answers as $answer) {
+            if ($answer->anonymously) {
+                $answer->responder = null;
+            }
+            /** @var TestAnswer $answer */
+            $answer->setRelation('questionAnswers', $answer->questionAnswers->keyBy('question_id'));
+        }
+        $questions = $this->testService->getUserTest($user);
+        return ['answers' => $answers, 'questions' => $questions->questions];
+    }
 }

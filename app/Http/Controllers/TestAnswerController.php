@@ -41,4 +41,11 @@ class TestAnswerController extends Controller
             abort(400, $e->getMessage());
         }
     }
+
+    public function info()
+    {
+        $this->authorize('info', TestAnswer::class);
+
+        return $this->testAnswerService->getTestAnswersInfo(auth()->user());
+    }
 }

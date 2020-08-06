@@ -23,6 +23,7 @@ Route::middleware('auth.vk')->group(function () {
     Route::post('/test', 'TestController@store')->name('createTest');
     Route::delete('/test', 'TestController@destroy')->name('deleteTest');
 
+    Route::get('/test/info', 'TestAnswerController@info')->name('testInfo');
     Route::get('/test/{user:vkid}', 'TestAnswerController@view')->name('test');
     Route::post('/test/{test}', 'TestAnswerController@answer')->name('answerTest');
 });
