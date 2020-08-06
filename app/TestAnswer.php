@@ -12,6 +12,13 @@ class TestAnswer extends Model
         'test_id'
     ];
 
+    protected $hidden = [
+        'user_id',
+        'test_id',
+        'updated_at',
+        'created_at',
+    ];
+
     public function test(): BelongsTo
     {
         return $this->belongsTo(Test::class);

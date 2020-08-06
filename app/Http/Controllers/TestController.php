@@ -22,17 +22,11 @@ class TestController extends Controller
             abort(404, "Тест ещё не существует или был удалён.");
     }
 
-    public function view(User $user)
-    {
-        return $this->testService->getUserTestWithoutAnswers($user) ??
-            abort(404, "Тест ещё не существует или был удалён.");
-    }
-
     public function store(TestRequest $request)
     {
         $this->authorize('store', Test::class);
 
-        $this->testService->createTest(auth()->user(), $request->questions);
+        $this->testService->createTest(auth()->user(), collect($request->questions));
     }
 
     public function destroy()

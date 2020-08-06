@@ -26,4 +26,11 @@ class QuestionAnswer extends Model
         'question_id',
         'test_answer_id',
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'id',
+        'test_answer_id',
+    ];
 }

@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\User;
 use App\Test;
+use Illuminate\Support\Collection;
 
 class TestService
 {
@@ -19,17 +20,7 @@ class TestService
         return $user->test->setRelation('questions', $user->test->questions->keyBy('id'));
     }
 
-    public function getUserTestWithoutAnswers(User $user): ?Test
-    {
-        $test = $this->getUserTest($user);
-        if (!$test) {
-            return null;
-        }
-        $test->questions->makeHidden('answer');
-        return $test;
-    }
-
-    public function createTest(User $user, array $questions): void
+    public function createTest(User $user, Collection $questions): void
     {
         /** @var Test $test */
         $test = $user->test()->create();

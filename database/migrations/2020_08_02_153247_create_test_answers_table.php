@@ -17,6 +17,7 @@ class CreateTestAnswersTable extends Migration
             $table->id();
             $table->foreignId('test_id');
             $table->foreignId('user_id');
+            $table->boolean('anonymously');
             $table->timestamps();
 
             $table->foreign('test_id')
