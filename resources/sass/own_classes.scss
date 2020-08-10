@@ -1,0 +1,76 @@
+:root {
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+}
+
+body {
+  padding-top: env(safe-area-inset-top);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.dialog .modal-card {
+  .modal-card-head {
+    font-weight: 700;
+  }
+
+  .modal-card-foot {
+    justify-content: flex-start;
+  }
+}
+
+.animation-content {
+  padding: 15px;
+}
+
+.notices .toast {
+  position: absolute;
+}
+
+.fade-enter-active, .fade-leave-active {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: opacity .3s;
+}
+
+.fade-enter, .fade-leave-to {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+}
+
+.gray-in-dark-mode {
+  $gray-if-dark-mode: #fff !default;
+  background-color: $gray-if-dark-mode;
+}
+
+.loading-overlay {
+  z-index: 5;
+}
+
+.section {
+  padding: 2rem 0.75rem;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+  border-color: $primary;
+}
+
+.h-scroll {
+  padding-bottom: 7px;
+  overflow-x: auto;
+}
+.app__box {
+  box-shadow: none !important;
+  border: 1px solid $grey-lighter;
+  width: 200px;
+}
+.app__box:hover, .app__box:active, .app__box:focus {
+  box-shadow: none !important;
+  border: 1px solid $grey-darker;
+}
