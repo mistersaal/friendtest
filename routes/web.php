@@ -26,4 +26,6 @@ Route::middleware('auth.vk')->group(function () {
     Route::get('/test/info', 'TestAnswerController@info')->name('testInfo');
     Route::get('/test/{user:vkid}', 'TestAnswerController@view')->name('test');
     Route::post('/test/{test}', 'TestAnswerController@answer')->name('answerTest');
+
+    Route::get('/results/{testAnswer}', 'TestAnswerController@result')->name('result');
 });

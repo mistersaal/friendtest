@@ -25,8 +25,8 @@ class TestAnswerService
         if (!$test) {
             return null;
         }
-        $test->yourAnswers = $this->getAnswers($test, $responder);
-        if (!$test->yourAnswers) {
+        $test->yourAnswer = $this->getAnswers($test, $responder);
+        if (!$test->yourAnswer) {
             $test->questions->makeHidden('answer');
         }
         return $test;
@@ -35,7 +35,10 @@ class TestAnswerService
     private function getAnswers(Test $test, User $user): ?Collection
     {
         $answer = $test->userAnswer($user);
-        return $answer ? $answer->questionAnswers->keyBy('question_id') : null;
+        return $answer ? collect([
+            'answers' => $answer->questionAnswers->keyBy('question_id'),
+            'id' => $answer->id
+        ]) : null;
     }
 
     /**
@@ -43,9 +46,10 @@ class TestAnswerService
      * @param User $user
      * @param Collection $answers
      * @param bool $anonymously
+     * @return int
      * @throws TestAnswerException
      */
-    public function answer(Test $test, User $user, Collection $answers, bool $anonymously): void
+    public function answer(Test $test, User $user, Collection $answers, bool $anonymously): int
     {
         $questions = $test->questions->keyBy('id');
         if (!$this->checkQuestionsAndAnswer($questions, $answers)) {
@@ -54,6 +58,8 @@ class TestAnswerService
 
         $testAnswer = $this->createTestAnswer($test, $user, $anonymously);
         $this->createQuestionAnswers($testAnswer, $questions, $answers);
+
+        return $testAnswer->id;
     }
 
     private function createTestAnswer(Test $test, User $user, bool $anonymously): TestAnswer
@@ -88,15 +94,22 @@ class TestAnswerService
 
     public function getTestAnswersInfo(User $user): array
     {
-        $answers = $user->test->testAnswers()->with(['questionAnswers', 'responder'])->get();
+        $answers = $user->test->testAnswers()->with(['questionAnswers.question', 'responder'])->get();
+        $answers->makeHidden('questionAnswers');
         foreach ($answers as $answer) {
             if ($answer->anonymously) {
-                $answer->responder = null;
+                $answer->makeHidden('responder');
             }
-            /** @var TestAnswer $answer */
-            $answer->setRelation('questionAnswers', $answer->questionAnswers->keyBy('question_id'));
+            $answer->right = 0;
+            $answer->count = 0;
+            foreach ($answer->questionAnswers as $questionAnswer) {
+                /** @var QuestionAnswer $questionAnswer */
+                if ($questionAnswer->answer === $questionAnswer->question->answer) {
+                    $answer->right++;
+                }
+                $answer->count++;
+            }
         }
-        $questions = $this->testService->getUserTest($user);
-        return ['answers' => $answers, 'questions' => $questions->questions];
+        return compact('answers');
     }
 }

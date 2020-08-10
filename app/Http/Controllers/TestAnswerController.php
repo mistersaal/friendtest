@@ -31,14 +31,15 @@ class TestAnswerController extends Controller
         $this->authorize('answer', [TestAnswer::class, $test]);
 
         try {
-            $this->testAnswerService->answer(
+            $answerId = $this->testAnswerService->answer(
                 $test,
                 auth()->user(),
                 collect($request->answers),
                 $request->anonymously
             );
+            return ['answerId' => $answerId];
         } catch (TestAnswerException $e) {
-            abort(400, $e->getMessage());
+            return abort(400, $e->getMessage());
         }
     }
 
@@ -47,5 +48,12 @@ class TestAnswerController extends Controller
         $this->authorize('info', TestAnswer::class);
 
         return $this->testAnswerService->getTestAnswersInfo(auth()->user());
+    }
+
+    public function result(TestAnswer $testAnswer)
+    {
+        $this->authorize('result', $testAnswer);
+
+        return $this->testAnswerService->getUserTestForResponder($testAnswer->test->author, $testAnswer->responder);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Test;
 use App\User;
+use App\TestAnswer;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
@@ -30,5 +31,12 @@ class TestAnswerPolicy
         return $user->test
             ? Response::allow()
             : Response::deny('У вас нет теста.');
+    }
+
+    public function result(User $user, TestAnswer $answer)
+    {
+        return $answer->responder->id === $user->id || $answer->test->author->id === $user->id
+            ? Response::allow()
+            : Response::deny('У вас нет прав на просмотр этого результата');
     }
 }
