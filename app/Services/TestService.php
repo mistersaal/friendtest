@@ -17,7 +17,12 @@ class TestService
         }
         $user->test->load('questions.defaultQuestion');
         $user->test->setRelation('questions', $user->test->questions->keyBy('id'));
-        return $user->test->setRelation('questions', $user->test->questions->keyBy('id'));
+        $user->test->questions->map(function($question) use ($user) {
+            if ($question->defaultQuestion) {
+                $question->defaultQuestion->value = str_replace('[name]', $user->first_name, $question->defaultQuestion->value);
+            }
+        });
+        return $user->test;
     }
 
     public function createTest(User $user, Collection $questions): void
