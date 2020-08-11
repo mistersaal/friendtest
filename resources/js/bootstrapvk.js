@@ -32,7 +32,7 @@ bridge.send("VKWebAppShowNativeAds", {ad_format: "preloader"})
     .catch(previewed)
 bridge.send("VKWebAppGetClientVersion", {})
     .then(data => {
-        if (data.platform === 'web') {
+        if (data.platform === 'web' || data.platform === 'mobile-web') {
             previewed()
             store.commit('web')
         }
