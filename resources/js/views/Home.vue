@@ -174,6 +174,7 @@
                     this.results = response.data.answers
                     this.resultLoaded = true
                 }).catch(() => {})
+            this.$store.commit('mainPageOpened')
         }
     }
 </script>

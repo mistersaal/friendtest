@@ -1,7 +1,7 @@
 <template>
     <div>
         <app-navbar v-if="createTest" back>Новый тест</app-navbar>
-        <app-navbar v-else back>Тест</app-navbar>
+        <app-navbar v-else :back="$store.state.mainPage">Тест</app-navbar>
         <section class="section">
             <div class="container">
                 <b-loading :active="!loaded"></b-loading>

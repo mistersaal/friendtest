@@ -1,6 +1,6 @@
 <template>
     <div>
-        <app-navbar back>Результат</app-navbar>
+        <app-navbar :back="$store.state.mainPage">Результат</app-navbar>
         <b-loading :active="!loaded"></b-loading>
         <section class="section">
             <div class="container">
@@ -21,6 +21,16 @@
                 </div>
             </div>
         </section>
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <b-field v-if="!$store.state.hasTest">
+                    <b-button @click="$router.push('/create')" expanded type="is-primary">Создать свой тест</b-button>
+                </b-field>
+                <b-field>
+                    <b-button @click="$router.push('/')" expanded>На главную</b-button>
+                </b-field>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -38,6 +48,7 @@
                 loaded: false,
             }
         },
+
         created() {
             axios.get('/results/' + this.$route.params['id'])
                 .then(response => {

@@ -13,6 +13,7 @@ export default new Vuex.Store({
         preview: false,
         hasTest: false,
         loaded: false,
+        mainPage: false,
     },
     mutations: {
         init(state) {
@@ -33,6 +34,9 @@ export default new Vuex.Store({
         loaded(state) {
             state.loaded = true
         },
+        mainPageOpened(state) {
+            state.mainPage = true
+        }
     },
     actions: {},
     modules: {}
