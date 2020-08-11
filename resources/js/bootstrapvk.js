@@ -1,8 +1,12 @@
 function previewed() {
     store.commit('preview')
     bridge.send("VKWebAppJoinGroup", {group_id: store.state.group})
-        .then(() => {})
-        .catch(() => {})
+        .then(() => {
+            bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: store.state.group});
+        })
+        .catch(() => {
+            bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: store.state.group});
+        })
 }
 
 bridge.subscribe(e => {
