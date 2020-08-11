@@ -2,7 +2,9 @@ function previewed() {
     store.commit('preview')
     // bridge.send("VKWebAppJoinGroup", {group_id: store.state.group})
     //     .then(() => {
-            bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: store.state.group});
+            bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: store.state.group})
+                .then(result => console.log(result))
+                .catch(result => console.log(result));
         // })
         // .catch(() => {
         //     bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: store.state.group});
