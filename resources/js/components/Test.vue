@@ -167,10 +167,7 @@
                         this.loaded = true
                     })
                     .catch((e) => {
-                        let error = 'Похоже, этот тест больше не существует';
-                        if (e.response.status === 403) {
-                            error = 'Вы автор этого теста'
-                        }
+                        let error = e.response.data.message
                         this.$buefy.toast.open({
                             message: error,
                             type: 'is-danger',

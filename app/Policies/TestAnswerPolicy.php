@@ -15,7 +15,7 @@ class TestAnswerPolicy
     public function view(User $user, ?Test $test)
     {
         if (!$test) {
-            return Response::deny('Этого теста не существует.');
+            return Response::deny('Похоже, этот тест больше не существует.');
         }
         return $test->isAuthor($user)
             ? Response::deny('Вы автор этого теста.')
