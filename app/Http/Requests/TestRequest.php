@@ -11,7 +11,7 @@ class TestRequest extends FormRequest
     {
         return [
             'questions' => 'required|array|size:' . config('settings.questionsCount'),
-            'questions.*.value' => 'required_without:questions.*.default_question_id|string|distinct|max:' .
+            'questions.*.value' => 'required_without:questions.*.default_question_id|string|max:' .
                 config('settings.maxQuestionLength'),
             'questions.*.default_question_id' => 'required_without:questions.*.value|distinct|exists:' .
                 DefaultQuestion::class . ',id',
