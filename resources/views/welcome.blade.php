@@ -8,8 +8,8 @@
 </head>
 <body>
     <div id="app"></div>
+    <script src="{{ mix('js/main.js') }}"></script>
     <img style="display: none" src="{{ asset('sticker.png') }}" id="sticker">
     <img style="display: none" src="{{ asset('background.png') }}" id="background">
-    <script src="{{ mix('js/main.js') }}"></script>
 </body>
 </html>

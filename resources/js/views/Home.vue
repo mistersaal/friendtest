@@ -37,7 +37,7 @@
                     </div>
                     <div class="columns is-centered is-mobile" v-if="!hasTest">
                         <div class="column is-three-quarters">
-                            <div class="has-text-centered has-text-grey-light">
+                            <div class="has-text-centered has-text-grey">
                                 <p>Пока тут ничего нет, но обязательно будет, когда Вы создадите тест</p>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                         </template>
                         <div class="columns is-centered is-mobile" v-else>
                             <div class="column is-three-quarters">
-                                <div class="has-text-centered has-text-grey-light">
+                                <div class="has-text-centered has-text-grey">
                                     <p v-if="loaded && resultLoaded">
                                         Разместите историю о своём тесте, чтобы друзья узнали о нём!
                                     </p>

@@ -14,17 +14,17 @@
                                 :key="key"
                                 :style="{'background-color': question.color}"
                             >
-                                <p class="is-size-5">Правда ли, что:</p>
-                                <p class="is-size-5" style="margin-top: 30px;" v-if="!settingYourQuestion">
+                                <p class="is-size-5" style="color: #0a0a0a;">Правда ли, что:</p>
+                                <p class="is-size-5" style="margin-top: 30px;color: #0a0a0a;" v-if="!settingYourQuestion">
                                     {{ question.value }}
                                 </p>
                                 <b-input type="textarea"
                                          v-if="i === 0 && settingYourQuestion"
                                          maxlength="70"
-                                         style="margin-top: 30px; width: 100%"
+                                         style="margin-top: 30px; width: 100%;"
                                          v-model="yourQuestion"
                                 ></b-input>
-                                <b-button style="margin-top: 30px;"
+                                <b-button style="margin-top: 30px;color: #363636;background-color: white;border-color: #dbdbdb;"
                                           @click="setYourQuestion"
                                           :loading="loadYourQuestion"
                                           v-if="!settingYourQuestion && createTest"
