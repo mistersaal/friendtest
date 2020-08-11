@@ -12,8 +12,11 @@ class TestAnswerPolicy
 {
     use HandlesAuthorization;
 
-    public function view(User $user, Test $test)
+    public function view(User $user, ?Test $test)
     {
+        if (!$test) {
+            return Response::deny('Этого теста не существует.');
+        }
         return $test->isAuthor($user)
             ? Response::deny('Вы автор этого теста.')
             : Response::allow();
