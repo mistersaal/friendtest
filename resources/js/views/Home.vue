@@ -136,7 +136,9 @@
                             }
                         }
                     ]
-                });
+                }).then(() => {
+                    ym(66061846,'reachGoal','friendsecretshistory')
+                })
             },
             getDataUrl(img) {
                 // Create canvas
