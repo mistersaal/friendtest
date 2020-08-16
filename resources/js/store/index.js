@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        group: 191738545,
-        appId: 7555867,
+        group: 181059138,
+        appId: 7568920,
         vkid: '',
         appInit: false,
         isWeb: false,

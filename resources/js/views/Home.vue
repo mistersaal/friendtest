@@ -1,6 +1,6 @@
 <template>
     <div>
-        <app-navbar>Правда-ложь</app-navbar>
+        <app-navbar>Проверь друзей</app-navbar>
         <section class="section">
             <b-loading :is-full-page="true" :active="!loaded"></b-loading>
             <delete-test></delete-test>
@@ -80,15 +80,21 @@
                 </div>
             </div>
         </section>
+        <section class="section">
+            <div class="container">
+                <apps></apps>
+            </div>
+        </section>
     </div>
 </template>
 
 <script>
     import AppNavbar from "../components/AppNavbar"
     import DeleteTest from "../components/Home/DeleteTest"
+    import Apps from "../components/Apps";
     export default {
         name: 'Home',
-        components: {DeleteTest, AppNavbar},
+        components: {Apps, DeleteTest, AppNavbar},
         data() {
             return {
                 results: [],
@@ -144,7 +150,7 @@
                         }
                     ]
                 }).then(() => {
-                    ym(66061846,'reachGoal','friendsecretshistory')
+                    // ym(66061846,'reachGoal','friendsecretshistory')
                 })
             },
             getDataUrl(img) {
