@@ -107,12 +107,12 @@
             },
             createTest() {
                 bridge.send("VKWebAppJoinGroup", {group_id: this.$store.state.group})
-                    .then(() => {
-                        bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: this.$store.state.group})
-                    })
-                    .catch(() => {
-                        bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: this.$store.state.group})
-                    })
+                    // .then(() => {
+                    //     bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: this.$store.state.group})
+                    // })
+                    // .catch(() => {
+                    //     bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: this.$store.state.group})
+                    // })
                 this.$router.push('/create')
             },
             share() {
