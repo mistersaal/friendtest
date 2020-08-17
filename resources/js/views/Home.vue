@@ -116,7 +116,7 @@
             },
             history() {
                 bridge.send("VKWebAppShowStoryBox", {
-                    background_type: this.$store.state.isWeb ? "image" : "none",
+                    background_type: "image",
                     blob: this.getDataUrl(document.getElementById('background')),
                     stickers: [
                         {
@@ -132,13 +132,13 @@
                                     },
                                     clickable_area: [
                                         {x: 0, y: 0},
-                                        {x: 1440, y: 0},
-                                        {x: 1440, y: 1080},
-                                        {x: 0, y: 1080},
+                                        {x: 350, y: 0},
+                                        {x: 350, y: 263},
+                                        {x: 0, y: 263},
                                     ]
                                 }],
-                                original_width: 1440,
-                                original_height: 1080,
+                                original_width: 350,
+                                original_height: 263,
                                 can_delete: false,
                             }
                         }
