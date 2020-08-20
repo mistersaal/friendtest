@@ -80,15 +80,21 @@
                 </div>
             </div>
         </section>
+        <section class="section">
+            <div class="container">
+                <apps></apps>
+            </div>
+        </section>
     </div>
 </template>
 
 <script>
     import AppNavbar from "../components/AppNavbar"
     import DeleteTest from "../components/Home/DeleteTest"
+    import Apps from "../components/Apps";
     export default {
         name: 'Home',
-        components: {DeleteTest, AppNavbar},
+        components: {Apps, DeleteTest, AppNavbar},
         data() {
             return {
                 results: [],
