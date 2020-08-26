@@ -18,7 +18,7 @@
         "bootstrap": "^4.0.0",
         "browser-sync": "^2.26.12",
         "browser-sync-webpack-plugin": "^2.0.1",
-        "buefy": "^0.8.20",
+        "buefy": "^0.9",
         "cross-env": "^7.0",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",

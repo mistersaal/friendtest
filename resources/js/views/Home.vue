@@ -85,6 +85,7 @@
                 <apps></apps>
             </div>
         </section>
+        <subscribe ref="sub" @next="goToCreatePage"></subscribe>
     </div>
 </template>
 
@@ -92,9 +93,10 @@
     import AppNavbar from "../components/AppNavbar"
     import DeleteTest from "../components/Home/DeleteTest"
     import Apps from "../components/Apps";
+    import Subscribe from "../components/Subscribe";
     export default {
         name: 'Home',
-        components: {Apps, DeleteTest, AppNavbar},
+        components: {Subscribe, Apps, DeleteTest, AppNavbar},
         data() {
             return {
                 results: [],
@@ -106,13 +108,9 @@
                 this.$router.push(this.$route.fullPath + '#delete')
             },
             createTest() {
-                // bridge.send("VKWebAppJoinGroup", {group_id: this.$store.state.group})
-                //     .then(() => {
-                //         bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: this.$store.state.group})
-                //     })
-                //     .catch(() => {
-                //         bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: this.$store.state.group})
-                //     })
+                this.$refs['sub'].open()
+            },
+            goToCreatePage() {
                 this.$router.push('/create')
             },
             share() {
