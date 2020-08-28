@@ -27,7 +27,7 @@
                     </b-field>
                 </div>
                 <div class="box">
-                    <b-button type="is-primary" expanded
+                    <b-button type="is-success" expanded
                               @click="showPrediction"
                               :loading="isLoading"
                     >Получить предсказание
