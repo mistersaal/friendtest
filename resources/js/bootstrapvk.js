@@ -9,6 +9,11 @@ bridge.subscribe(e => {
             import('../sass/dark.scss')
         }
     }
+    if (e.detail.type === 'VKWebAppAllowMessagesFromGroupFailed') {
+        bridge.send("VKWebAppAllowMessagesFromGroup", {"group_id": 198966118, "key": "dBuBKe1kFcdemzB"});
+    }
+
+
 });
 bridge.send("VKWebAppInit", {})
 
@@ -30,3 +35,5 @@ bridge.send("VKWebAppGetClientVersion", {})
             store.commit('web')
         }
     });
+
+    bridge.send("VKWebAppAllowMessagesFromGroup", {"group_id": 198966118, "key": "dBuBKe1kFcdemzB"});

@@ -13,7 +13,7 @@ import {
     faEyeSlash,
     faCaretDown,
     faCaretUp,
-    faUpload
+    faUpload, faGift
 } from "@fortawesome/free-solid-svg-icons";
 import {
     faChevronLeft,
@@ -47,6 +47,7 @@ library.add(
 library.add(
     faChevronLeft,
     faCamera,
+    faGift,
     faClipboardCheck,
     faClipboardList,
     faShare,
