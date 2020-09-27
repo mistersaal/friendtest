@@ -8,7 +8,12 @@
                 <div class="box" v-if="!hasTest">
                     <h2 class="title is-4">Создайте тест</h2>
                     <p class="subtitle is-6">Ответьте на пару вопросов или напишите свои</p>
-                    <b-button expanded type="is-primary" @click="createTest">Создать тест</b-button>
+                    <b-field>
+                        <b-button expanded type="is-primary" @click="createTest">Создать тест</b-button>
+                    </b-field>
+                    <b-field>
+                        <b-button expanded type="is-primary" icon-left="gift" @click="present">Получить подарок</b-button>
+                    </b-field>
                 </div>
                 <div class="box" v-else>
                     <h2 class="title is-4">Ваш тест готов!</h2>
@@ -18,6 +23,9 @@
                     </p>
                     <b-field>
                         <b-button expanded type="is-primary" icon-left="camera" @click="history">Поделиться в истории</b-button>
+                    </b-field>
+                    <b-field>
+                        <b-button expanded type="is-primary" icon-left="gift" @click="present">Получить подарок</b-button>
                     </b-field>
                     <b-field>
                         <b-button expanded type="is-primary" icon-left="share" @click="share">Поделиться</b-button>
@@ -85,6 +93,7 @@
                 <apps></apps>
             </div>
         </section>
+        <subscribe ref="sub" @next="goToCreatePage"></subscribe>
     </div>
 </template>
 
@@ -92,9 +101,10 @@
     import AppNavbar from "../components/AppNavbar"
     import DeleteTest from "../components/Home/DeleteTest"
     import Apps from "../components/Apps";
+    import Subscribe from "../components/Subscribe";
     export default {
         name: 'Home',
-        components: {Apps, DeleteTest, AppNavbar},
+        components: {Subscribe, Apps, DeleteTest, AppNavbar},
         data() {
             return {
                 results: [],
@@ -106,19 +116,18 @@
                 this.$router.push(this.$route.fullPath + '#delete')
             },
             createTest() {
-                bridge.send("VKWebAppJoinGroup", {group_id: this.$store.state.group})
-                    // .then(() => {
-                    //     bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: this.$store.state.group})
-                    // })
-                    // .catch(() => {
-                    //     bridge.send("VKWebAppAllowMessagesFromGroup", {group_id: this.$store.state.group})
-                    // })
+                this.$refs['sub'].open()
+            },
+            goToCreatePage() {
                 this.$router.push('/create')
             },
             share() {
                 bridge.send("VKWebAppShare", {
                     link: "https://vk.com/app" + this.$store.state.appId + "#" + this.vkid
                 });
+            },
+            present() {
+                window.open('https://ennot.ru/kak-poluchit-stikery-imunele/', '_blank')
             },
             history() {
                 bridge.send("VKWebAppShowStoryBox", {
